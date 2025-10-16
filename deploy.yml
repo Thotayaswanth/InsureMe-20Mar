@@ -4,17 +4,18 @@
   connection : ssh
   tasks : 
   - name: updating apt
-    command : sudo apt update
+    command : sudo apt-get update
 
- - name : Install Docker
+  - name : Install Docker
     become: true
     apt:
      name: docker.io
      state: latest
      update_cache: yes
     
+
   - name : Start Docker Service
     command : sudo systemctl start docker
 
   - name: Deploy Docker Container
-    command: docker run -itd -p 8084:8081 thotayaswanth/insureme:1.0
+    command:  docker run -itd -p 8080:8081 thotayaswanth/insuremee:1.0
